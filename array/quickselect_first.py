@@ -1,13 +1,36 @@
-def quickselect(a, k):
-    n = len(a)
-    for p in range(n):
-        count = 0
-        for i in range(n):
-            if a[i] < a[p]:
-                count+=1
+import random
+a = [54, 26, 17, 93, 77, 31, 44, 20, 55]
+def partition(low, high):
+    # select random pivot and place at the end
+    pivot = random.randint(low, high)
+    a[pivot], a[high] = a[high], a[pivot]
 
-        if count + 1 == k:
-            return a[p]
+    final_pos = low
+
+    while low < high:
+        if a[low] < a[high]:
+            a[final_pos], a[low] = a[low], a[final_pos]
+            final_pos += 1
+        low+=1
+
+    a[final_pos], a[high] = a[high], a[final_pos]
+
+    return final_pos
+
+def quickselect(low, high, k):
+    #if a:
+    val = partition(low, high)
+    print(val)
+    if val < k:
+        # recurse right side
+        print("Right")
+        return quickselect(val+1, high, k)
+    elif val > k:
+        # recurse left side
+        print("Left")
+        return quickselect(low, val-1, k)
+    else:
+        return a[val]
 
 
-print(quickselect([5,3,2,1,4], 2))
+print(quickselect(0, 8, 2))
