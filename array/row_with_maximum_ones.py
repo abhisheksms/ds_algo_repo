@@ -11,7 +11,7 @@ def left_zero(a, low, high):
         # left half
         return left_zero(a, low, mid-1)
 
-    return len(a)
+    return len(a) # exit condition
 
 
 # print(left_zero([0,0,0,0,0,1,1], 0, 6)) # 5
