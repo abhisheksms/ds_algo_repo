@@ -1,3 +1,4 @@
+# Incorrect
 def stock_buy_sell(a):
     local_minima = profit = 0
     n = len(a)
